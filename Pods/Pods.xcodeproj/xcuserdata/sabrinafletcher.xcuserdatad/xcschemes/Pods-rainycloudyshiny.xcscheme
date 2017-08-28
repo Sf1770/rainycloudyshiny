@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0830"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D62FC7C41F4E1C840045CF3D"
-               BuildableName = "rainycloudyshiny.app"
-               BlueprintName = "rainycloudyshiny"
-               ReferencedContainer = "container:rainycloudyshiny.xcodeproj">
+               BlueprintIdentifier = "1A9552A209B56FED8A1408C03486FA05"
+               BuildableName = "Pods_rainycloudyshiny.framework"
+               BlueprintName = "Pods-rainycloudyshiny"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D62FC7C41F4E1C840045CF3D"
-            BuildableName = "rainycloudyshiny.app"
-            BlueprintName = "rainycloudyshiny"
-            ReferencedContainer = "container:rainycloudyshiny.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D62FC7C41F4E1C840045CF3D"
-            BuildableName = "rainycloudyshiny.app"
-            BlueprintName = "rainycloudyshiny"
-            ReferencedContainer = "container:rainycloudyshiny.xcodeproj">
+            BlueprintIdentifier = "1A9552A209B56FED8A1408C03486FA05"
+            BuildableName = "Pods_rainycloudyshiny.framework"
+            BlueprintName = "Pods-rainycloudyshiny"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D62FC7C41F4E1C840045CF3D"
-            BuildableName = "rainycloudyshiny.app"
-            BlueprintName = "rainycloudyshiny"
-            ReferencedContainer = "container:rainycloudyshiny.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
