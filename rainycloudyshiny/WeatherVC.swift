@@ -29,12 +29,17 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         
         currentWeather = CurrentWeather()
-        currentWeather.downloadWeatherDetails{
-            self.downloadForecastData {
-                self.updateMainUI()
+        DispatchQueue.global(qos: .userInteractive).async{
+            self.currentWeather.downloadWeatherDetails {
+                self.downloadForecastData {
+                    DispatchQueue.main.async {
+                        self.updateMainUI()
+                    }
+                }
             }
         }
-        
+    
+    
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,24 +63,36 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func downloadForecastData(completed: @escaping DownloadComplete){
+        let session = URLSession.shared
         let forecastURL = URL(string: FORECAST_URL)
-        Alamofire.request(forecastURL!).responseJSON{ response in
-            let result = response.result
-            
-            if let dict = result.value as? Dictionary<String, AnyObject> {
-                
-                if let list  = dict["list"] as? [Dictionary<String, AnyObject>] {
-                    for obj in list{
-                        let forecast = Forecast(weatherDict: obj)
-                        self.forecasts.append(forecast)
-                        print(obj)
+        let task = session.dataTask(with: forecastURL!, completionHandler: { (data, response, error) in
+            if error != nil{
+                print(error as Any)
+            } else{
+                if let urlContent = data{
+                    do{
+                        let parsedData = try JSONSerialization.jsonObject(with: urlContent) as Any
+                        if let dict = parsedData as? Dictionary<String, AnyObject>{
+                            if let list  = dict["list"] as? [Dictionary<String, AnyObject>] {
+                                for obj in list{
+                                    let forecast = Forecast(weatherDict: obj)
+                                    self.forecasts.append(forecast)
+                                    print(obj)
+                                }
+                                self.forecasts.remove(at: 0)
+                                self.tableView.reloadData()
+                            }
+                        }
+                    }catch let error as NSError{
+                        print(error)
                     }
-                    self.forecasts.remove(at: 0)
-                    self.tableView.reloadData()
                 }
+                
             }
-            completed()
-        }
+            
+        })
+        task.resume()
+        completed()
     }
     
     
